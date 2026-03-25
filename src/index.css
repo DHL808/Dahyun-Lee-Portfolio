@@ -1,0 +1,90 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: 'Playfair Display', serif;
+  --font-sans: 'Noto Sans KR', sans-serif;
+  --font-mono: 'DM Mono', monospace;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Noto+Sans+KR:wght@300;400;500&family=DM+Mono:ital,wght@0,400;0,500;1,400&display=swap');
+
+:root {
+  --bg: #f7f5f0;
+  --bg2: #eeeae1;
+  --bg3: #e5e0d5;
+  --ink: #1a1a18;
+  --ink2: #4a4a46;
+  --ink3: #8a8a84;
+  --green: #2d6a4f;
+  --green-lt: #d8ece3;
+  --green-mid: #52b788;
+  --line: #d8d4ca;
+  --white: #ffffff;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  cursor: none;
+}
+
+/* Custom Cursor Styles */
+.cursor {
+  width: 10px;
+  height: 10px;
+  background: var(--green);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: transform 0.15s ease;
+}
+
+.cursor-ring {
+  width: 32px;
+  height: 32px;
+  border: 1.5px solid var(--green);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  opacity: 0.4;
+  transition: all 0.08s ease;
+}
+
+/* Animations */
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+.animate-pulse-custom {
+  animation: pulse 2.4s ease infinite;
+}
+
+@keyframes scrollDown {
+  to { top: 100%; }
+}
+
+.animate-scroll-down::after {
+  content: '';
+  position: absolute;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--green-mid);
+  animation: scrollDown 2.2s ease infinite;
+}
+
+/* Layout Utilities */
+.hero-deco {
+  clip-path: polygon(8% 0, 100% 0, 100% 100%, 0% 100%);
+}
+
+.contact-stripe {
+  clip-path: polygon(10% 0, 100% 0, 100% 100%, 0% 100%);
+}
